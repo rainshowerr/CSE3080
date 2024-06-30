@@ -22,7 +22,7 @@ typedef struct {
 
 int top = -1;
 element stack[MAX_STACK_SIZE];
-offsets move[8] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}}; /* array of moves for each direction */
+offsets move[8] = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}}; /* array of moves for each direction */
 int mark[13][17] = { 0, }; /* 이미 방문했으면 1, 아니면 0 */
 int maze[13][17] = {
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -75,7 +75,7 @@ void path(void) {
 	mark[1][1] = 1;
 	// push the start position and direction
 	top = 0;
-	stack[0].row = 1; stack[0].col = 1; stack[0].dir = 7; stack[0].key = 0;
+	stack[0].row = 1; stack[0].col = 1; stack[0].dir = 3; stack[0].key = 0;
 	while(top > -1 && !found) {
 		element position = stackPop();
 		row = position.row; col = position.col; dir = position.dir;
